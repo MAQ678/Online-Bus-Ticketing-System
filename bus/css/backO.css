@@ -1,0 +1,55 @@
+/** {
+  box-sizing: border-box;
+}
+/*http://codepen.io/aniketpant/pen/DsEve
+http://codepen.io/akademy/pen/FlkzB
+
+body
+{
+  background-image: url('i2.jpg');
+  background-repeat: repeat-x;
+}
+.background-imageO {
+  background-image: url('i2.jpg');
+  background-size: cover;
+  display: block;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  height: 800px;
+  left: 0;
+  position: fixed;
+  right: 0;
+  z-index: 1;
+}
+
+.contentO{
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 3px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  top: 10px;
+  left: 0;
+  position: fixed;
+  margin-left: 20px;
+  margin-right: 20px;
+  right: 0;
+  z-index: 2;
+  padding: 0 10px;
+}
+
+.contentO::before  {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  margin-left: 20px;
+  margin-right: 20px;
+}*/
+
+.oPu {
+    height: auto;
+    width: auto;
+    background: #f00 url(http://10.175.165.11/SP199.27.74.193/SDi.imgur.com/SpdSBNxU4.jpg/Rqae5eb53b-c103-49e4-a363-9cb05f81161d/ID618A6A4A145A1473/RV200000/AVSkyController_3.1.2.50020/Br200/CL2-global/EI3448632789/Ht240/IP10.39.210.38%3a2992/IQ25/MO15/MT0/NIGPMOCCA-GAZDIST1-SKFCTL1/OC0/OS0/Otjpeg/PB200/PNMedCongestion_3G4GWiFi_Desktop/SI07000600b00b50000000000000000000000000000a27d226000000000000000000000000c71b4ac11df2ef3ccedff900/SUhttp%3a%2f%2fi.imgur.com%2fdSBNxU4.jpg/Sd736B7966697265/TI3448632789/Tr1/Wh400/EUFylZKZ9gqQLfzPlTqvepqaIUZJbVka.47TFJPUEAHcd6ltLR4nxlnIngGfjF3XysJo0HO27MqTj1dxLwPkI9usqlVe9M-av-.pI6nBREHRZISUpLTE1OT1hZWltcXV5f/EV21ad7e424d035fed4b620fe584def37f/file.jpeg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}

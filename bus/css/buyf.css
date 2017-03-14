@@ -1,0 +1,13 @@
+form li
+{
+	list-style: none;
+	margin-bottom: 20px;
+}
+form ul
+{
+	padding-left: 0;
+}
+label
+{
+	display: block;
+}

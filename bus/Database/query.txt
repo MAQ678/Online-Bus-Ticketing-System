@@ -1,0 +1,95 @@
+// admin table
+CREATE TABLE `busticket`.`admin_t` ( `id` INT(6) NOT NULL AUTO_INCREMENT , `name` VARCHAR(30) NOT NULL , `pass` VARCHAR(200) NOT NULL , PRIMARY KEY (`id`) ) ENGINE = InnoDB;
+
+
+//customer table
+
+CREATE TABLE `busticket`.`customer_t` ( `c_id` INT(6) NOT NULL AUTO_INCREMENT , `name` VARCHAR(30) NOT NULL , `pass` VARCHAR(200) NOT NULL , `adress` VARCHAR(100) NOT NULL , `gender` VARCHAR(6) NOT NULL , `checked_by` INT(6) NOT NULL , PRIMARY KEY (`c_id`) ) ENGINE = InnoDB;
+
+ALTER TABLE `customer_t` ADD INDEX(`checked_by`);
+
+ALTER TABLE `customer_t` ADD FOREIGN KEY (`checked_by`) REFERENCES `busticket`.`admin_t`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+
+
+ALTER TABLE `customer_t` ADD `mobile` INT(20) NOT NULL AFTER `name`, ADD UNIQUE (`mobile`) ;//add mobile no
+
+ALTER TABLE `customer_t` ADD `booked_bus_id` INT(6) NOT NULL AFTER `checked_by`, ADD `booked_seat_no` VARCHAR(6) NOT NULL AFTER `booked_bus_id`, ADD `booked_dateT` DATETIME NOT NULL AFTER `booked_seat_no`, ADD INDEX (`booked_bus_id`) , ADD INDEX (`booked_seat_no`) , ADD INDEX (`booked_dateT`) ;
+
+
+//bus table
+
+CREATE TABLE `busticket`.`bus_t` ( `b_id` INT(6) NOT NULL AUTO_INCREMENT , `name` VARCHAR(20) NOT NULL , `source` VARCHAR(20) NOT NULL , `destination` VARCHAR(20) NOT NULL , `added_by` INT(6) NOT NULL ) ENGINE = InnoDB;
+
+
+ALTER TABLE `bus_t` ADD INDEX(`added_by`);
+
+
+ALTER TABLE `bus_t` ADD FOREIGN KEY (`added_by`) REFERENCES `busticket`.`admin_t`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+
+ALTER TABLE `bus_t` ADD FOREIGN KEY (`source`) REFERENCES `busticket`.`bus_fair`(`Source`) ON DELETE CASCADE ON UPDATE CASCADE; ALTER TABLE `bus_t` ADD FOREIGN KEY (`destination`) REFERENCES `busticket`.`bus_fair`(`destination`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+
+
+//bus-fair table
+CREATE TABLE `busticket`.`bus_fair` ( `Source` VARCHAR(20) NOT NULL , `destination` VARCHAR(20) NOT NULL , `type` VARCHAR(6) NOT NULL , `fair` INT(6) NOT NULL , PRIMARY KEY (`Source`, `destination`, `type`) ) ENGINE = InnoDB;
+
+
+
+
+//seats table
+CREATE TABLE `busticket`.`seats` ( `bus_id` INT(6) NOT NULL , `seat_no` VARCHAR(6) NOT NULL , `date` DATE NOT NULL , `time` TIME NOT NULL , `status` INT(6) NOT NULL , `modified_by` INT(6) NOT NULL , PRIMARY KEY (`bus_id`, `seat_no`, `date`, `time`) ) ENGINE = InnoDB;
+
+ALTER TABLE `seats` ADD INDEX(`bus_id`);
+ALTER TABLE `seats` ADD INDEX(`modified_by`);
+
+ALTER TABLE `seats` ADD FOREIGN KEY (`bus_id`) REFERENCES `busticket`.`bus_t`(`b_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `seats` ADD FOREIGN KEY (`modified_by`) REFERENCES `busticket`.`admin_t`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+//customer selection table
+CREATE TABLE `busticket`.`customer_selection` ( `customer_id` INT(6) NOT NULL , `bus_id` INT(6) NOT NULL , PRIMARY KEY (`customer_id`, `bus_id`) ) ENGINE = InnoDB;
+
+ALTER TABLE `customer_selection` ADD INDEX(`customer_id`);
+ALTER TABLE `customer_selection` ADD INDEX(`bus_id`);
+
+
+ALTER TABLE `customer_selection` ADD FOREIGN KEY (`customer_id`) REFERENCES `busticket`.`customer_t`(`c_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `customer_selection` ADD FOREIGN KEY (`bus_id`) REFERENCES `busticket`.`bus_t`(`b_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+
+//////add booked by
+ALTER TABLE `seats` ADD `booked_by` INT(6) NOT NULL AFTER `modified_by`, ADD INDEX (`booked_by`) ;
+
+
+ALTER TABLE `seats` ADD FOREIGN KEY (`booked_by`) REFERENCES `busticket`.`customer_t`(`c_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+
+
+//customer
+ALTER TABLE `customer_t` ADD FOREIGN KEY (`booked_seat_no`) REFERENCES `busticket`.`seats`(`seat_no`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `customer_t` DROP FOREIGN KEY `customer_t_ibfk_4`; ALTER TABLE `customer_t` ADD CONSTRAINT `customer_t_ibfk_4` FOREIGN KEY (`booked_dateT`) REFERENCES `busticket`.`seats`(`dateT`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+create table if not exists customer_T (C_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,name VARCHAR(30) NOT NULL,pass VARCHAR(200) NOT NULL,Adress varchar(30),gender varchar(6) Not NULL,checked_by INT(6) );
+
+
+ALTER TABLE `customer_t` ADD INDEX(`checked_by`);

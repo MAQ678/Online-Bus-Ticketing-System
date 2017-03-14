@@ -1,0 +1,43 @@
+a:link
+{
+	color: 	#000000;
+	text-decoration: none;
+}
+
+a:visited
+{
+	color: 	#000000;
+	text-decoration: none;
+}
+
+a:hover
+{
+	color: 	red;
+	text-decoration: none;
+}
+a:active {
+    color: #0000FF;
+    text-decoration: none;
+}
+
+
+div.header
+{
+	
+	color: black;
+	text-align: center;
+	padding:5px;
+}
+div.section
+{	
+	text-align: center;
+	padding: 170px;
+
+}
+div.footer
+{
+	color: black;
+	clear:both;
+	text-align: center;
+	padding: 5px;
+}
